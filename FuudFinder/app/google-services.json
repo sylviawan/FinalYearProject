@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "485461330277",
+    "firebase_url": "https://fuudfinder-a069d.firebaseio.com",
+    "project_id": "fuudfinder-a069d",
+    "storage_bucket": "fuudfinder-a069d.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:485461330277:android:ec2d26c10c1f6e4e",
+        "android_client_info": {
+          "package_name": "com.example.sylviawan.fuudfinder"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "485461330277-6506fdfn6rf4lkroni5ti9sude5abele.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBVQpsXq2I_epT0MbNYx-0d5LUIqP9QJiw"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
