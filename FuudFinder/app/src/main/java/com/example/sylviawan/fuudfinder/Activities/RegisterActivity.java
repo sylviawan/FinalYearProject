@@ -1,5 +1,6 @@
 package com.example.sylviawan.fuudfinder.Activities;
 
+import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -16,6 +17,8 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.auth.UserProfileChangeRequest;
+
 
 public class RegisterActivity extends AppCompatActivity {
 
@@ -44,7 +47,7 @@ public class RegisterActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 submitBtn.setVisibility(View.INVISIBLE);
-                progressBar.setVisibility(View.INVISIBLE);
+                progressBar.setVisibility(View.VISIBLE);
 
                 final String name = userName.getText().toString();
                 final String email = userEmail.getText().toString();
@@ -65,7 +68,7 @@ public class RegisterActivity extends AppCompatActivity {
     }
 
 
-    private void CreateNewUser(String name, String email, String password) {
+    private void CreateNewUser(final String name, String email, String password) {
 
         mAuth.createUserWithEmailAndPassword(email, password)
                 .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
@@ -94,5 +97,38 @@ public class RegisterActivity extends AppCompatActivity {
 
     private void updateUser(String name, FirebaseUser currentUser) {
 
+        UserProfileChangeRequest profileUpdate = new UserProfileChangeRequest.Builder()
+                .setDisplayName(name)
+                .build();
+
+        currentUser.updateProfile(profileUpdate).addOnCompleteListener(new OnCompleteListener<Void>() {
+            @Override
+
+            public void onComplete(@NonNull Task<Void> task) {
+
+                if (task.isSuccessful()){
+                    displayMessage("Register Success!");
+                    updateUI();
+                }
+            }
+        });
+
+    }
+
+    private void updateUI() {
+        Intent  homeActivity = new Intent(getApplicationContext(), HomeActivity.class);
+        startActivity(homeActivity);
+        finish();
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+
+        FirebaseUser user = mAuth.getCurrentUser();
+
+        if (user != null) {
+            updateUI();
+        }
     }
 }
