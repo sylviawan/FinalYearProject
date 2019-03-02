@@ -90,6 +90,7 @@ public class RegisterActivity extends AppCompatActivity {
 
     }
 
+//    Display message to user
     private void displayMessage(String message) {
         Toast.makeText(getApplicationContext(), message,Toast.LENGTH_LONG).show();
 
@@ -115,6 +116,7 @@ public class RegisterActivity extends AppCompatActivity {
 
     }
 
+//    Intents to the home activity
     private void updateUI() {
         Intent  homeActivity = new Intent(getApplicationContext(), HomeActivity.class);
         startActivity(homeActivity);

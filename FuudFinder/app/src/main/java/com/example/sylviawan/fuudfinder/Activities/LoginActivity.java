@@ -24,7 +24,6 @@ public class LoginActivity extends AppCompatActivity {
     private ProgressBar logProcessBar;
 
     private FirebaseAuth mAuth;
-    private Intent HomeActivity;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
