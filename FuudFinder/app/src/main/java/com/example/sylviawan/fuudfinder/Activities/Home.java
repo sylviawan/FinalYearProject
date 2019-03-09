@@ -1,5 +1,6 @@
 package com.example.sylviawan.fuudfinder.Activities;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -15,6 +16,9 @@ import android.view.MenuItem;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.example.sylviawan.fuudfinder.Fragments.HomeFragment;
+import com.example.sylviawan.fuudfinder.Fragments.ProfileFragment;
+import com.example.sylviawan.fuudfinder.Fragments.SettingsFragment;
 import com.example.sylviawan.fuudfinder.R;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -97,18 +101,31 @@ public class Home extends AppCompatActivity
         // Handle navigation view item clicks here.
         int id = item.getItemId();
 
-        if (id == R.id.nav_camera) {
+        if (id == R.id.nav_home) {
             // Handle the camera action
-        } else if (id == R.id.nav_gallery) {
+            getActionBar().setTitle("Home");
+            getSupportFragmentManager().beginTransaction().replace(R.id.container,new HomeFragment()).commit();
 
-        } else if (id == R.id.nav_slideshow) {
+        }
+        else if (id == R.id.nav_profile) {
 
-        } else if (id == R.id.nav_manage) {
+            getActionBar().setTitle("Profile");
+            getSupportFragmentManager().beginTransaction().replace(R.id.container,new ProfileFragment()).commit();
 
-        } else if (id == R.id.nav_share) {
+        }
+        else if (id == R.id.nav_settings) {
 
-        } else if (id == R.id.nav_logout) {
+            getActionBar().setTitle("Settings");
+            getSupportFragmentManager().beginTransaction().replace(R.id.container,new SettingsFragment()).commit();
 
+        }
+        else if (id == R.id.nav_logout) {
+
+            FirebaseAuth.getInstance().signOut();
+
+            Intent loginActivity = new Intent(getApplicationContext(), LoginActivity.class);
+            startActivity(loginActivity);
+            finish();
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
