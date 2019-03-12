@@ -1,8 +1,9 @@
-package com.example.sylviawan.fuudfinder;
+package com.example.sylviawan.fuudfinder.Activities;
 
 import android.support.v4.app.FragmentActivity;
 import android.os.Bundle;
 
+import com.example.sylviawan.fuudfinder.R;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;

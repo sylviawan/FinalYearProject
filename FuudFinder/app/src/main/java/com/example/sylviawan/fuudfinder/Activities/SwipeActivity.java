@@ -12,9 +12,9 @@ public class SwipeActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_swipe);
 
-        relativeLayoutContainer.setOnTouchListener(new onTouchListenser(){
-
-        });
+//        relativeLayoutContainer.setOnTouchListener(new onTouchListenser(){
+//
+//        });
 
     }
 }
