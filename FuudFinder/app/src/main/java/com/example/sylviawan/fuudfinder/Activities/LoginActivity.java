@@ -98,7 +98,6 @@ public class LoginActivity extends AppCompatActivity {
         Toast.makeText(getApplicationContext(), s, Toast.LENGTH_LONG).show();
     }
 
-
     @Override
     protected void onStart() {
         super.onStart();
