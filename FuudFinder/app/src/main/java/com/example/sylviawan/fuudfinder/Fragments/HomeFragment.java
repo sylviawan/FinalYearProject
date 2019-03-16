@@ -14,17 +14,14 @@ import javax.annotation.Nullable;
 
 public class HomeFragment extends Fragment {
 
-    public void onViewCreated(View view, @Nullable Bundle savedInstance){
+    public void onViewCreated(View view, @Nullable Bundle savedInstance) {
         super.onViewCreated(view, savedInstance);
 
         getActivity().setTitle("Home");
     }
 
-
-
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_home, container, false);
     }
