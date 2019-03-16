@@ -100,7 +100,10 @@ public class Home extends AppCompatActivity implements NavigationView.OnNavigati
         switch (id) {
 
             case R.id.nav_home:
-                fragment = new HomeFragment();
+                //fragment = new HomeFragment();
+                Intent mapActivity = new Intent(getApplicationContext(), MapsActivity.class);
+                startActivity(mapActivity);
+                finish();
                 break;
             case R.id.nav_profile:
                 fragment = new ProfileFragment();
