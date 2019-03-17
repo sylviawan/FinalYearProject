@@ -7,6 +7,7 @@ import android.location.Address;
 import android.location.Geocoder;
 import android.location.Location;
 
+import com.example.sylviawan.fuudfinder.Class.GetNearbyFood;
 import com.google.android.gms.location.FusedLocationProviderApi;
 import com.google.android.gms.location.LocationListener;
 
@@ -18,6 +19,7 @@ import android.support.v4.app.FragmentActivity;
 import android.os.Bundle;
 import android.support.v4.content.ContextCompat;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
@@ -53,6 +55,9 @@ public class MapsActivity extends FragmentActivity implements
     private Location lastLocation;
     private Marker currentUserLocationMarker;
     private static final int Request_User_Location_Code = 99;
+    private double latitude;
+    private double longitude;
+    private int ProximityRad = 10000;
 
 
     @Override
@@ -71,6 +76,10 @@ public class MapsActivity extends FragmentActivity implements
     }
 
     public void onClick(View view) {
+
+        String food = "restaurant";
+        Object transferData[] = new Object[2];
+        GetNearbyFood getNearbyFood = new GetNearbyFood();
 
         switch (view.getId())
         {
@@ -112,15 +121,38 @@ public class MapsActivity extends FragmentActivity implements
                         e.printStackTrace();
                     }
                 }
-
                 else
                 {
                     Toast.makeText(this, "Enter an address", Toast.LENGTH_SHORT).show();
                 }
                 break;
-        }
 
+            case R.id.restaurant_search:
+                mMap.clear();
+                String url = getUrl(latitude, longitude, food);
+                transferData[0] = mMap;
+                transferData[1] = url;
+
+                getNearbyFood.execute(transferData);
+                Toast.makeText(this, "Searching for food places", Toast.LENGTH_SHORT).show();
+                break;
+        }
     }
+
+    private String getUrl(double latitude, double longitude, String nearbyFood)
+    {
+        StringBuilder googleURL = new StringBuilder("https://maps.googleapis.com/maps/api/place/nearbysearch/json?");
+        googleURL.append("location" + latitude + "," + longitude);
+        googleURL.append("&radius" + ProximityRad);
+        googleURL.append("&type" + nearbyFood);
+        googleURL.append("&sensor=true");
+        googleURL.append("&key" + "AIzaSyD68Vwctaskp7k9LrG3Fy0u3C3U8h4jz-c");
+
+        Log.d("MapsActivity", "url = " + googleURL.toString());
+        return googleURL.toString();
+    }
+
+
     @Override
     public void onMapReady(GoogleMap googleMap) {
         mMap = googleMap;
@@ -194,6 +226,9 @@ public class MapsActivity extends FragmentActivity implements
 
     @Override
     public void onLocationChanged(Location location) {
+
+        latitude = location.getLatitude();
+        longitude = location.getLongitude();
         lastLocation = location;
 
         if (currentUserLocationMarker != null)
