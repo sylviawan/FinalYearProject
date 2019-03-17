@@ -3,6 +3,8 @@ package com.example.sylviawan.fuudfinder.Activities;
 import android.Manifest;
 import android.content.Context;
 import android.content.pm.PackageManager;
+import android.location.Address;
+import android.location.Geocoder;
 import android.location.Location;
 
 import com.google.android.gms.location.FusedLocationProviderApi;
@@ -15,6 +17,9 @@ import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.FragmentActivity;
 import android.os.Bundle;
 import android.support.v4.content.ContextCompat;
+import android.text.TextUtils;
+import android.view.View;
+import android.widget.EditText;
 import android.widget.Toast;
 
 import com.example.sylviawan.fuudfinder.R;
@@ -32,6 +37,9 @@ import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
+
+import java.io.IOException;
+import java.util.List;
 
 public class MapsActivity extends FragmentActivity implements
         OnMapReadyCallback,
@@ -62,6 +70,57 @@ public class MapsActivity extends FragmentActivity implements
         mapFragment.getMapAsync(this);
     }
 
+    public void onClick(View view) {
+
+        switch (view.getId())
+        {
+            // Search user's address function
+            case R.id.search_go:
+                EditText addressBar = (EditText) findViewById(R.id.location_search);
+                String address = addressBar.getText().toString();
+
+                List<Address> addressList = null;
+                MarkerOptions userMarkerOpts = new MarkerOptions();
+
+                if (!TextUtils.isEmpty(address))
+                {
+                    Geocoder geocoder = new Geocoder(this);
+
+                    try {
+                        addressList = geocoder.getFromLocationName(address, 6);
+
+                        if (addressList != null)
+                        {
+                            for (int i=0; i<addressList.size(); i++)
+                            {
+                                Address userAddr = addressList.get(i);
+                                LatLng latLng = new LatLng(userAddr.getLatitude(), userAddr.getLongitude());
+                                userMarkerOpts.position(latLng);
+                                userMarkerOpts.title(address);
+                                userMarkerOpts.icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_GREEN));
+                                mMap.addMarker(userMarkerOpts);
+                                mMap.moveCamera(CameraUpdateFactory.newLatLng(latLng));
+                                mMap.animateCamera(CameraUpdateFactory.zoomTo(10));
+                            }
+                        }
+                        else
+                        {
+                            Toast.makeText(this, "Location Not Found", Toast.LENGTH_SHORT).show();
+                        }
+                    }
+                    catch (IOException e) {
+                        e.printStackTrace();
+                    }
+                }
+
+                else
+                {
+                    Toast.makeText(this, "Enter an address", Toast.LENGTH_SHORT).show();
+                }
+                break;
+        }
+
+    }
     @Override
     public void onMapReady(GoogleMap googleMap) {
         mMap = googleMap;
@@ -70,7 +129,6 @@ public class MapsActivity extends FragmentActivity implements
         {
             // ActivityCompat#requestPermissions
             // here to request the missing permissions to handle the case where the user grants the permission.
-
             buildGoogleApiClient();
             mMap.setMyLocationEnabled(true);
         }
@@ -116,8 +174,9 @@ public class MapsActivity extends FragmentActivity implements
                 }
                 else
                     {
-                        Toast.makeText(this, "Permission Denied:(", Toast.LENGTH_SHORT);
+                        Toast.makeText(this, "Permission Denied", Toast.LENGTH_SHORT);
                     }
+
                     return;
         }
     }
