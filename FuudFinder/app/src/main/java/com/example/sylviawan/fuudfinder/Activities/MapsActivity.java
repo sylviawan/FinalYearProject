@@ -142,7 +142,7 @@ public class MapsActivity extends FragmentActivity implements
     private String getUrl(double latitude, double longitude, String nearbyFood)
     {
         StringBuilder googleURL = new StringBuilder("https://maps.googleapis.com/maps/api/place/nearbysearch/json?");
-        googleURL.append("location" + latitude + "," + longitude);
+        googleURL.append("location=" + latitude + "," + longitude);
         googleURL.append("&radius" + ProximityRad);
         googleURL.append("&type" + nearbyFood);
         googleURL.append("&sensor=true");
@@ -164,7 +164,6 @@ public class MapsActivity extends FragmentActivity implements
             buildGoogleApiClient();
             mMap.setMyLocationEnabled(true);
         }
-
     }
 
     public boolean checkUserLocationPermission()
@@ -240,7 +239,7 @@ public class MapsActivity extends FragmentActivity implements
 
         MarkerOptions markerOptions = new MarkerOptions();
         markerOptions.position(latLng);
-        markerOptions.title("da user current location yoooo");
+        markerOptions.title("Current Location");
         markerOptions.icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_ROSE));
 
         currentUserLocationMarker = mMap.addMarker(markerOptions);

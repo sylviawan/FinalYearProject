@@ -16,7 +16,7 @@ public class DataParser {
 
         String nameOfPlace = "NA";
         String vicinity = "NA";
-        String lattitude = "";
+        String latitude = "";
         String longitude = "";
         String reference = "";
 
@@ -30,13 +30,13 @@ public class DataParser {
                 nameOfPlace = googlePlaceJSON.getString("vicinity");
             }
 
-            lattitude = googlePlaceJSON.getJSONObject("geo").getJSONObject("location").getString("lat");
-            longitude = googlePlaceJSON.getJSONObject("geo").getJSONObject("location").getString("lng");
+            latitude = googlePlaceJSON.getJSONObject("geometry").getJSONObject("location").getString("lat");
+            longitude = googlePlaceJSON.getJSONObject("geometry").getJSONObject("location").getString("lng");
             reference = googlePlaceJSON.getString("reference");
 
             googlePlaceMap.put("place_name", nameOfPlace);
             googlePlaceMap.put("vicinity", vicinity);
-            googlePlaceMap.put("lat", lattitude);
+            googlePlaceMap.put("lat", latitude);
             googlePlaceMap.put("lng", longitude);
             googlePlaceMap.put("reference", reference);
 

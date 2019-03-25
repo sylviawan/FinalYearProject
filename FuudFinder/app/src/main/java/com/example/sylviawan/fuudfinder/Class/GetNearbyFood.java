@@ -35,7 +35,6 @@ public class GetNearbyFood extends AsyncTask {
 
     }
 
-
     protected void onPostExecute(String s) {
 
         List<HashMap<String,String>> nearFoodList = null;
