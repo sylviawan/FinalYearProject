@@ -6,4 +6,7 @@
     android:layout_height="match_parent"
     tools:context=".Activities.HomeActivity">
 
+    <!-- Swipe implementation in this area-->
+
+
 </android.support.constraint.ConstraintLayout>

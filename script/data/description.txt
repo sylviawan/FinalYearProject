@@ -1,10 +1,9 @@
 id,
-name,
-address,
 latitude,
 longitude,
 stars,
 type,
 specialty,
 price,
-reservation
+reservation,
+name

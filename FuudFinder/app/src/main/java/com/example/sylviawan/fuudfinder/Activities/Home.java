@@ -2,7 +2,6 @@ package com.example.sylviawan.fuudfinder.Activities;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.design.widget.Snackbar;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
 import android.view.View;
@@ -18,12 +17,10 @@ import android.widget.TextView;
 
 import com.example.sylviawan.fuudfinder.Fragments.HomeFragment;
 import com.example.sylviawan.fuudfinder.Fragments.ProfileFragment;
-import com.example.sylviawan.fuudfinder.Fragments.SettingsFragment;
+import com.example.sylviawan.fuudfinder.Fragments.ListsFragment;
 import com.example.sylviawan.fuudfinder.R;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
-
-import org.w3c.dom.Text;
 
 //    set the location for the user
 //    retrieve nearby restaurants
@@ -35,7 +32,6 @@ public class Home extends AppCompatActivity implements NavigationView.OnNavigati
 
     FirebaseUser currentUser;
     FirebaseAuth mAuth;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -66,31 +62,16 @@ public class Home extends AppCompatActivity implements NavigationView.OnNavigati
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         if (drawer.isDrawerOpen(GravityCompat.START)) {
             drawer.closeDrawer(GravityCompat.START);
-        } else {
+        }
+        else {
             super.onBackPressed();
         }
     }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.home, menu);
         return true;
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
-
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
-        }
-
-        return super.onOptionsItemSelected(item);
     }
 
     private void displaySelectScreen(int id) {
@@ -98,18 +79,17 @@ public class Home extends AppCompatActivity implements NavigationView.OnNavigati
         Fragment fragment = null;
 
         switch (id) {
-
             case R.id.nav_home:
-                //fragment = new HomeFragment();
-                Intent mapActivity = new Intent(getApplicationContext(), MapsActivity.class);
-                startActivity(mapActivity);
-                finish();
+                fragment = new HomeFragment();
+//                Intent mapActivity = new Intent(getApplicationContext(), MapsActivity.class);
+//                startActivity(mapActivity);
+//                finish();
                 break;
             case R.id.nav_profile:
                 fragment = new ProfileFragment();
                 break;
-            case R.id.nav_settings:
-                fragment = new SettingsFragment();
+            case R.id.nav_fave:
+                fragment = new ListsFragment();
                 break;
             case R.id.nav_logout:
                 FirebaseAuth.getInstance().signOut();
@@ -125,7 +105,6 @@ public class Home extends AppCompatActivity implements NavigationView.OnNavigati
             ft.commit();
         }
 
-
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
     }
@@ -136,7 +115,6 @@ public class Home extends AppCompatActivity implements NavigationView.OnNavigati
         displaySelectScreen(id);
 
         return true;
-
     }
 
     public void updateNavHeader() {

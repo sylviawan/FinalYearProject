@@ -18,6 +18,7 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.UserProfileChangeRequest;
+import com.google.firebase.storage.FirebaseStorage;
 
 
 public class RegisterActivity extends AppCompatActivity {
@@ -26,6 +27,7 @@ public class RegisterActivity extends AppCompatActivity {
     private Button submitBtn;
     private ProgressBar progressBar;
 
+    private FirebaseStorage storage;
     private FirebaseAuth mAuth;
 
     @Override
@@ -42,6 +44,7 @@ public class RegisterActivity extends AppCompatActivity {
         progressBar.setVisibility(View.INVISIBLE);
 
         mAuth = FirebaseAuth.getInstance();
+        storage = FirebaseStorage.getInstance();
 
         submitBtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -54,7 +57,7 @@ public class RegisterActivity extends AppCompatActivity {
                 final String password = userPass.getText().toString();
                 final String password2 = userPass2.getText().toString();
 
-                if ( name.isEmpty() || email.isEmpty() || password.isEmpty() || password2.isEmpty() || !password.equals(password2)) {
+                if (name.isEmpty() || email.isEmpty() || password.isEmpty() || password2.isEmpty() || !password.equals(password2)) {
 
                     displayMessage("Please check all fields");
                     submitBtn.setVisibility(View.VISIBLE);
@@ -116,7 +119,7 @@ public class RegisterActivity extends AppCompatActivity {
 
     }
 
-//    Intents to the home activity
+    //Intents to the home activity
     private void updateUI() {
         Intent  homeActivity = new Intent(getApplicationContext(), Home.class);
         startActivity(homeActivity);

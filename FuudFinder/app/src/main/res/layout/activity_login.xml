@@ -21,15 +21,15 @@
         app:srcCompat="@drawable/fuud_finder_logo" />
 
     <EditText
-        android:hint="Email"
-        android:background="@drawable/reg_style"
         android:id="@+id/loginEmail"
-        android:layout_width="210dp"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:layout_marginTop="88dp"
         android:layout_marginEnd="8dp"
+        android:background="@drawable/reg_style"
         android:ems="10"
+        android:hint="Email"
         android:inputType="textEmailAddress"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.502"
@@ -44,18 +44,17 @@
         app:layout_constraintGuide_percent="0.5" />
 
     <EditText
-        android:hint="Password"
-        android:background="@drawable/reg_style"
         android:id="@+id/loginPass"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="60dp"
+        android:layout_marginTop="84dp"
         android:layout_marginEnd="8dp"
+        android:background="@drawable/reg_style"
         android:ems="10"
+        android:hint="Password"
         android:inputType="textPassword"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.51"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/loginEmail" />
 
@@ -72,9 +71,10 @@
         android:textColor="#FFFFFF"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.516"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/loginPass"
-        app:layout_constraintVertical_bias="0.335" />
+        app:layout_constraintVertical_bias="0.258" />
 
     <ProgressBar
         android:id="@+id/logProgressBar"
@@ -89,19 +89,21 @@
 
     <TextView
         android:id="@+id/dirReg"
-        android:layout_width="163dp"
-        android:layout_height="23dp"
+        android:layout_width="200dp"
+        android:layout_height="26dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginBottom="8dp"
-        android:text="Don't have an account?"
+        android:text="Create an account?"
         android:textSize="14sp"
+        android:visibility="visible"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.635"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/logProgressBar"
-        app:layout_constraintVertical_bias="0.325" />
+        app:layout_constraintVertical_bias="0.176" />
 
     <Button
         android:id="@+id/btnToReg"
@@ -116,9 +118,9 @@
         android:textSize="12sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintHorizontal_bias="0.519"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/dirReg"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintVertical_bias="0.342" />
 
 </android.support.constraint.ConstraintLayout>
