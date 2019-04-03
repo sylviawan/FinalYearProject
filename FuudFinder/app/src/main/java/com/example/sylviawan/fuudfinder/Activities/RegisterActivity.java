@@ -10,7 +10,7 @@ import android.widget.EditText;
 import android.widget.ProgressBar;
 import android.widget.Toast;
 
-
+import com.example.sylviawan.fuudfinder.Class.User;
 import com.example.sylviawan.fuudfinder.R;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -18,10 +18,16 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.UserProfileChangeRequest;
+import com.google.firebase.database.ChildEventListener;
+import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.database.FirebaseDatabase;
 
 
 public class RegisterActivity extends AppCompatActivity {
+
+    private FirebaseDatabase mDatabase;
+    DatabaseReference dataUsers;
 
     private EditText userName, userEmail, userPass, userPass2;
     private Button submitBtn;
@@ -29,6 +35,8 @@ public class RegisterActivity extends AppCompatActivity {
 
     private FirebaseStorage storage;
     private FirebaseAuth mAuth;
+    private FirebaseAuth.AuthStateListener mAuthStateListener;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,6 +50,8 @@ public class RegisterActivity extends AppCompatActivity {
         submitBtn = findViewById(R.id.regSubmit);
         progressBar = findViewById(R.id.regProgressBar);
         progressBar.setVisibility(View.INVISIBLE);
+
+        dataUsers = FirebaseDatabase.getInstance().getReference("users");
 
         mAuth = FirebaseAuth.getInstance();
         storage = FirebaseStorage.getInstance();
@@ -65,6 +75,11 @@ public class RegisterActivity extends AppCompatActivity {
                 }
                 else {
                     CreateNewUser(name, email, password);
+
+                    // Firebase user
+                    String userId = dataUsers.push().getKey();
+                    User user = new User(userId,name,email);
+                    dataUsers.child(userId).setValue(user);
                 }
             }
         });
@@ -81,7 +96,6 @@ public class RegisterActivity extends AppCompatActivity {
                             displayMessage("Registration completed!");
 
                             updateUser(name, mAuth.getCurrentUser());
-
                         }
                         else {
                             displayMessage("Registration not complete!" + task.getException().getMessage());
@@ -90,10 +104,9 @@ public class RegisterActivity extends AppCompatActivity {
                         }
                     }
                 });
-
     }
 
-//    Display message to user
+    // Display message to user
     private void displayMessage(String message) {
         Toast.makeText(getApplicationContext(), message,Toast.LENGTH_LONG).show();
 
@@ -110,18 +123,22 @@ public class RegisterActivity extends AppCompatActivity {
 
             public void onComplete(@NonNull Task<Void> task) {
 
-                if (task.isSuccessful()){
+                if (task.isSuccessful()) {
                     displayMessage("Register Success!");
                     updateUI();
                 }
             }
         });
+    }
+
+    private void writeNewUser(String userId, String name, String email) {
+
 
     }
 
     //Intents to the home activity
     private void updateUI() {
-        Intent  homeActivity = new Intent(getApplicationContext(), Home.class);
+        Intent homeActivity = new Intent(getApplicationContext(), Home.class);
         startActivity(homeActivity);
         finish();
     }

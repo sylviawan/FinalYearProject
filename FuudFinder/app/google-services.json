@@ -13,27 +13,20 @@
           "package_name": "com.example.sylviawan.fuudfinder"
         }
       },
-      "oauth_client": [
-        {
-          "client_id": "485461330277-6506fdfn6rf4lkroni5ti9sude5abele.apps.googleusercontent.com",
-          "client_type": 3
-        }
-      ],
+      "oauth_client": [],
       "api_key": [
         {
           "current_key": "AIzaSyBVQpsXq2I_epT0MbNYx-0d5LUIqP9QJiw"
         }
       ],
       "services": {
-        "analytics_service": {
-          "status": 1
-        },
         "appinvite_service": {
-          "status": 1,
-          "other_platform_oauth_client": []
-        },
-        "ads_service": {
-          "status": 2
+          "other_platform_oauth_client": [
+            {
+              "client_id": "485461330277-6506fdfn6rf4lkroni5ti9sude5abele.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
         }
       }
     }

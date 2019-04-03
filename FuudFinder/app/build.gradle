@@ -31,16 +31,24 @@ dependencies {
     androidTestImplementation 'com.android.support.test:runner:1.0.2'
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
 
+    implementation 'com.google.firebase:firebase-database:16.1.0'
+    implementation 'com.firebaseui:firebase-ui-database:4.2.1'
+
+
+    //Arch
+    implementation "android.arch.core:runtime:1.1.1"
+    implementation "android.arch.core:common:1.1.1"
+
     //Firebase Core
-    implementation 'com.google.firebase:firebase-core:16.0.7'
+    implementation 'com.google.firebase:firebase-core:16.0.8'
     //Firebase Auth
-    implementation 'com.google.firebase:firebase-auth:16.1.0'
+    implementation 'com.google.firebase:firebase-auth:16.2.0'
     //Firebase Storage
     implementation 'com.google.firebase:firebase-storage:16.1.0'
 
-    // Card Stack view
-//    implementation 'com.yuyakaido.android:card-stack-view:2.2.5'
+    // Card Swipe
     implementation 'com.lorentzos.swipecards:library:1.0.9'
+
     //Places
     implementation 'com.google.android.libraries.places:places:1.0.0'
     implementation 'com.google.android.gms:play-services-location:16.0.0'

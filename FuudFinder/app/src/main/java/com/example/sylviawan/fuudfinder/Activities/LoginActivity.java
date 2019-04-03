@@ -51,7 +51,7 @@ public class LoginActivity extends AppCompatActivity {
                 final String Email = userEmail.getText().toString();
                 final String Password = userPass.getText().toString();
 
-                if ( Email.isEmpty() || Password.isEmpty()) {
+                if (Email.isEmpty() || Password.isEmpty()) {
 
                     displayMessage("Login details incorrect!");
                 }
@@ -70,7 +70,6 @@ public class LoginActivity extends AppCompatActivity {
                 finish();
             }
         });
-
     }
 
     private void logIn(String email, String password) {

@@ -1,19 +1,18 @@
 package com.example.sylviawan.fuudfinder.Fragments;
 
 import android.Manifest;
-import android.content.Context;
+import android.app.PendingIntent;
 import android.content.pm.PackageManager;
 import android.location.Address;
 import android.location.Geocoder;
 import android.location.Location;
-import android.net.Uri;
+import android.location.LocationManager;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentManager;
 import android.support.v4.content.ContextCompat;
 import android.text.TextUtils;
 import android.util.Log;
@@ -32,7 +31,6 @@ import com.google.android.gms.location.LocationRequest;
 import com.google.android.gms.location.LocationServices;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
-import com.google.android.gms.maps.MapFragment;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.BitmapDescriptorFactory;
@@ -43,11 +41,13 @@ import com.google.android.gms.maps.model.MarkerOptions;
 import java.io.IOException;
 import java.util.List;
 
+import static android.content.Context.LOCATION_SERVICE;
+
 public class ProfileFragment extends Fragment implements
         OnMapReadyCallback,
         GoogleApiClient.ConnectionCallbacks,
         GoogleApiClient.OnConnectionFailedListener,
-        LocationListener{
+        LocationListener {
 
     private GoogleMap mMap;
     private GoogleApiClient googleApiClient;
@@ -145,11 +145,12 @@ public class ProfileFragment extends Fragment implements
     private String getUrl(double latitude, double longitude, String nearbyFood)
     {
         StringBuilder googleURL = new StringBuilder("https://maps.googleapis.com/maps/api/place/nearbysearch/json?");
+
         googleURL.append("location=" + latitude + "," + longitude);
-        googleURL.append("&radius" + ProximityRad);
-        googleURL.append("&type" + nearbyFood);
+        googleURL.append("&radius=" + ProximityRad);
+        googleURL.append("&type=" + nearbyFood);
         googleURL.append("&sensor=true");
-        googleURL.append("&key" + "AIzaSyD68Vwctaskp7k9LrG3Fy0u3C3U8h4jz-c");
+        googleURL.append("&key=" + "AIzaSyD68Vwctaskp7k9LrG3Fy0u3C3U8h4jz-c");
 
         Log.d("ProfileFragment", "url = " + googleURL.toString());
         return googleURL.toString();
@@ -254,7 +255,13 @@ public class ProfileFragment extends Fragment implements
         {
             LocationServices.FusedLocationApi.removeLocationUpdates(googleApiClient, this);
         }
+
+//        LocationManager locationManager = (LocationManager) getActivity().getSystemService(LOCATION_SERVICE);
+//
+//        locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 0, 0, locationListener);
+//        locationManager.requestLocationUpdates(LocationManager.NETWORK_PROVIDER, 0, 0, locationListener);
     }
+
 
     @Override
     public void onConnected(@Nullable Bundle bundle) {

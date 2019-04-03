@@ -207,7 +207,6 @@ public class MapsActivity extends FragmentActivity implements
                     {
                         Toast.makeText(this, "Permission Denied", Toast.LENGTH_SHORT);
                     }
-
                     return;
         }
     }
@@ -239,7 +238,7 @@ public class MapsActivity extends FragmentActivity implements
 
         MarkerOptions markerOptions = new MarkerOptions();
         markerOptions.position(latLng);
-        markerOptions.title("Current Location");
+        markerOptions.title("Your Current Location");
         markerOptions.icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_ROSE));
 
         currentUserLocationMarker = mMap.addMarker(markerOptions);
