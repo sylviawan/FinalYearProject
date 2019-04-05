@@ -139,6 +139,7 @@ public class MapsActivity extends FragmentActivity implements
         }
     }
 
+    //Get nearby food places
     private String getUrl(double latitude, double longitude, String nearbyFood)
     {
         StringBuilder googleURL = new StringBuilder("https://maps.googleapis.com/maps/api/place/nearbysearch/json?");
@@ -199,7 +200,6 @@ public class MapsActivity extends FragmentActivity implements
                         {
                             buildGoogleApiClient();
                         }
-
                         mMap.setMyLocationEnabled(true);
                     }
                 }
