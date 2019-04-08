@@ -22,11 +22,7 @@ import com.example.sylviawan.fuudfinder.R;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
-//    set the location for the user
-//    retrieve nearby restaurants
-//    swiping method
-//    put 5 through a recommended algorithm - namely naive bayes .. boolean operation
-//    output will be a nearby recommendation of that category
+
 
 public class Home extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 

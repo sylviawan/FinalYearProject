@@ -15,15 +15,20 @@ import android.widget.Toast;
 import com.example.sylviawan.fuudfinder.Activities.LoginActivity;
 import com.example.sylviawan.fuudfinder.Activities.PlacesActivity;
 import com.example.sylviawan.fuudfinder.R;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 import com.lorentzos.flingswipe.SwipeFlingAdapterView;
 
 import java.util.ArrayList;
 
 public class HomeFragment extends Fragment {
 
+    // private cards cardsData[];
     private ArrayList<String> arrL;
     private ArrayAdapter<String> arrayAdapter;
     private int i;
+
+    private DatabaseReference userDB;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -31,6 +36,8 @@ public class HomeFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_home, container, false);
 
         getActivity().setTitle("Home");
+
+        userDB = FirebaseDatabase.getInstance().getReference().child("users");
 
         arrL = new ArrayList<>();
         arrL.add("Casual?");
@@ -72,9 +79,8 @@ public class HomeFragment extends Fragment {
 
             @Override
             public void onAdapterAboutToEmpty(int itemsInAdapter) {
-//                arrL.add("More to come ");
                 arrayAdapter.notifyDataSetChanged();
-//                i++;
+                i++;
                 Intent placesActivity = new Intent(getActivity(), PlacesActivity.class);
                 startActivity(placesActivity);
             }

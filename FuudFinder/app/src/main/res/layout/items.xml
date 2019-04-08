@@ -9,7 +9,7 @@
         android:id="@+id/welcomeText"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/colorAccent"
+        android:background="@color/dollaz"
         android:gravity="center"
         android:textColor="@android:color/white"
         android:textSize="30sp"
@@ -17,11 +17,11 @@
 
     <View
         android:id="@+id/item_left_indicator"
-        android:alpha="0"
-        android:layout_width="20dp"
-        android:layout_height="20dp"
+        android:layout_width="10dp"
+        android:layout_height="10dp"
         android:layout_margin="10dp"
-        android:background="#6FC5B3"/>
+        android:alpha="0"
+        android:background="#6FC5B3" />
 
     <View
         android:id="@+id/item_right_indicator"

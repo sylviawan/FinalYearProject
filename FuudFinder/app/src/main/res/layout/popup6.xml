@@ -24,15 +24,15 @@
         android:orientation="vertical">
 
         <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@drawable/bunsen_pic"
+            android:layout_width="279dp"
+            android:layout_height="152dp"
             android:layout_gravity="center"
-            android:layout_marginTop="15dp" />
+            android:layout_marginTop="15dp"
+            android:src="@drawable/wishbone" />
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Bunsen Burgers"
+            android:text="Wishbone"
             android:textStyle="bold"
             android:textColor="#FFFFFF"
             android:layout_gravity="center_horizontal"
@@ -40,7 +40,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Wexford Street"
+            android:text="Montague Street"
             android:textColor="#FFFFFF"
             android:layout_gravity="center_horizontal"
             android:layout_marginTop="5dp"/>
@@ -64,7 +64,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="150"
+                android:text="300"
                 android:textSize="18sp"
                 android:textColor="#FFFFFF"/>
             <TextView
@@ -87,7 +87,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Burgers"
+                android:text="Restaurant"
                 android:textSize="18sp"
                 android:textColor="#FFFFFF"/>
             <TextView
@@ -110,7 +110,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="4.6"
+                android:text="4.5"
                 android:textSize="18sp"
                 android:textColor="#FFFFFF"/>
             <TextView
@@ -123,14 +123,15 @@
         </LinearLayout>
 
     </LinearLayout>
+
     <Button
         android:id="@+id/btnLike"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Like"
-        android:textColor="#FFFFFF"
-        android:layout_marginTop="25dp"
+        android:layout_width="145dp"
+        android:layout_height="50dp"
         android:layout_gravity="center_horizontal"
-        android:background="@drawable/btn_style"/>
+        android:layout_marginTop="25dp"
+        android:background="@drawable/btn_style"
+        android:text="Add to Favorites"
+        android:textColor="#FFFFFF" />
 
 </LinearLayout>

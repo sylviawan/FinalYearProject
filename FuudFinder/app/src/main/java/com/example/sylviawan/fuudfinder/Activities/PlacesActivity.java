@@ -4,16 +4,12 @@ import android.app.Dialog;
 import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
-import android.support.v4.app.Fragment;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
-import com.example.sylviawan.fuudfinder.Fragments.HomeFragment;
 import com.example.sylviawan.fuudfinder.R;
 
 public class PlacesActivity extends AppCompatActivity {
@@ -40,7 +36,7 @@ public class PlacesActivity extends AppCompatActivity {
     public void ShowPopup(View view) {
         TextView txtclose;
         Button btnLike;
-        myDialog.setContentView(R.layout.custompopup);
+        myDialog.setContentView(R.layout.popup1);
         txtclose = (TextView) myDialog.findViewById(R.id.txtclose);
         btnLike = (Button) myDialog.findViewById(R.id.btnLike);
 
@@ -59,6 +55,7 @@ public class PlacesActivity extends AppCompatActivity {
             }
 
             private void addFavorite() {
+                //Take the item from firebase to the list
             }
         });
 

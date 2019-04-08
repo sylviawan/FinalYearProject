@@ -65,7 +65,7 @@ public class ProfileFragment extends Fragment implements
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_profile, container, false);
-        getActivity().setTitle("Profile");
+        getActivity().setTitle("Location");
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M)
         {

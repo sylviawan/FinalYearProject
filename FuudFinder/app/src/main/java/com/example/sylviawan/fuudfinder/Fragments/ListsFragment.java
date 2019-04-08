@@ -28,7 +28,7 @@ public class ListsFragment extends Fragment {
         getActivity().setTitle("Favourites");
 
 
-        ListView listView = view.findViewById(R.id.list_view);
+        ListView listView = view.findViewById(R.id.list_item);
 
 //        FirebaseListOptions<FoodList> options = new FirebaseListOptions.Builder<FoodList>()
 //                .setLayout(R.id.foods)
