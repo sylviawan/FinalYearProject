@@ -56,6 +56,7 @@ public class PlacesActivity extends AppCompatActivity {
 
             private void addFavorite() {
                 //Take the item from firebase to the list
+
             }
         });
 

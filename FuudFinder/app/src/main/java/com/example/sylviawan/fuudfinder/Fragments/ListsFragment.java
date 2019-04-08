@@ -10,12 +10,15 @@ import android.widget.ListView;
 
 import com.example.sylviawan.fuudfinder.R;
 import com.firebase.ui.database.FirebaseListAdapter;
+import com.firebase.ui.database.FirebaseListOptions;
+import com.firebase.ui.database.FirebaseRecyclerAdapter;
+import com.firebase.ui.database.FirebaseRecyclerAdapter_LifecycleAdapter;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
 public class ListsFragment extends Fragment {
 
-    ListView listview;
+    FirebaseRecyclerAdapter listview;
     private FirebaseDatabase database = FirebaseDatabase.getInstance();
     DatabaseReference mref = database.getReference();
     FirebaseListAdapter adapter;
@@ -28,14 +31,14 @@ public class ListsFragment extends Fragment {
         getActivity().setTitle("Favourites");
 
 
-        ListView listView = view.findViewById(R.id.list_item);
+        FirebaseListOptions listView = view.findViewById(R.id.list_item);
 
 //        FirebaseListOptions<FoodList> options = new FirebaseListOptions.Builder<FoodList>()
 //                .setLayout(R.id.foods)
 //                .setQuery(query,FoodList.class)
 //                .build();
 
-//        Firebase ref = Firebase("https://fuudfinder-a069d.firebaseio.com/Person");
+        Firebase ref = Firebase("https://fuudfinder-a069d.firebaseio.com/Person");
 
         /*
          * Create a DatabaseReference to the data; works with standard DatabaseReference methods
