@@ -1,6 +1,7 @@
 package com.example.sylviawan.fuudfinder.Activities;
 
 import android.app.Dialog;
+import android.app.ListFragment;
 import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
@@ -9,6 +10,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.sylviawan.fuudfinder.R;
 
@@ -51,13 +53,11 @@ public class PlacesActivity extends AppCompatActivity {
         btnLike.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                addFavorite();
+                Toast.makeText(getApplicationContext(),"Added to Favorites List", Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(PlacesActivity.this, ListFragment.class);
+                startActivity(intent);
             }
 
-            private void addFavorite() {
-                //Take the item from firebase to the list
-
-            }
         });
 
         myDialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));

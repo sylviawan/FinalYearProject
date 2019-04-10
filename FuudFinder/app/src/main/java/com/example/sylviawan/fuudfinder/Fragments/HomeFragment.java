@@ -50,6 +50,12 @@ public class HomeFragment extends Fragment {
         arrL.add("Cafe?");
         arrL.add("Restaurant?");
         arrL.add("Do you want a reservation?");
+        arrL.add("...");
+        arrL.add("Cozy?");
+        arrL.add("Asian?");
+        arrL.add("Budget?");
+        arrL.add("Fancy?");
+        arrL.add("Burgers?");
 
         arrayAdapter = new ArrayAdapter<>(getActivity(), R.layout.items, R.id.welcomeText, arrL);
 
